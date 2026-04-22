@@ -104,7 +104,7 @@
       <div class="qr-box">
         <img id="qrImage" src="" alt="접속용 QR코드">
       </div>
-      <p style="font-size:0.9em; text-align:center; color:#546e7a;">위 QR코드를 인쇄하여 연수 장소 입구에 붙여주세요.</p>
+      <p style="font-size:0.9em; text-align:center; color:#546e7a;">위 QR코드를 인쇄하여 연수 장소에 붙여주세요.</p>
       <input type="text" id="shareUrl" readonly title="클릭하면 복사됩니다" onclick="this.select(); document.execCommand('copy'); alert('서명 주소가 복사되었습니다!');">
     </div>
 
@@ -114,14 +114,14 @@
       <p style="font-weight:bold; margin-top:0;">👩‍🏫 교직원 명단 관리</p>
       
       <div style="display: flex; gap: 10px; margin-bottom: 5px;">
-        <button class="btn btn-gray" onclick="downloadTpl()" style="margin: 0; flex: 1;">📥 기본 양식 (CSV)</button>
+        <button class="btn btn-gray" onclick="downloadTpl()" style="margin: 0; flex: 1;">📥 기본 양식 다운로드 (CSV)</button>
         <button class="btn btn-blue" onclick="downloadCurrentList()" style="margin: 0; flex: 1;">📤 현재 명단 다운로드</button>
       </div>
       
       <p style="font-size:0.85em; color:#c62828; margin-top:0; margin-bottom:15px; font-weight:bold;">※ 한셀 사용자는 작성 후 [다른 이름으로 저장]에서 '엑셀 문서(.xlsx)'로 저장하여 올려주세요.</p>
       
       <input type="file" id="excelFile" accept=".xlsx, .xls, .csv, .cell">
-      <button class="btn btn-green" onclick="uploadExcel()">파일 업로드 및 명단 갱신</button>
+      <button class="btn btn-green" onclick="uploadExcel()">파일 업로드 및 명단 생성</button>
       <button class="btn btn-red" onclick="resetList()" style="margin-top: 10px;">명단 전체 초기화</button>
     </div>
 
@@ -135,11 +135,11 @@
         <input type="text" id="sessionLocation" placeholder="장소 (예: 서현고 시청각실)" style="flex: 1 1 30%;">
       </div>
       
-      <button class="btn btn-purple" onclick="createSession()">연수 개설하기</button>
+      <button class="btn btn-purple" onclick="createSession()">연수 등록부 생성하기</button>
     </div>
 
     <div class="section">
-      <p style="font-weight:bold; margin-top:0;">📚 등록된 연수 목록</p>
+      <p style="font-weight:bold; margin-top:0;">📚 등록된 연수 등록부 목록</p>
       <div id="sessionList"></div>
     </div>
   </div>
