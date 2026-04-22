@@ -9,21 +9,18 @@
   <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
 
   <style>
-    /* 🎨 학교 분위기(에듀테크) 테마로 전면 개편된 CSS */
     body { font-family: 'Malgun Gothic', '맑은 고딕', sans-serif; background-color: #f5f6f5; margin: 0; padding: 20px; color: #333; }
     
-    /* 메인 알림장 느낌의 컨테이너 */
     .container { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.06); max-width: 600px; margin: 0 auto; border-top: 8px solid #2e7d32; }
     h2 { color: #1b5e20; border-bottom: 2px dashed #81c784; padding-bottom: 12px; text-align: center; font-weight: 800; letter-spacing: -1px; margin-top: 0; }
     
-    /* 따뜻하고 신뢰감 있는 버튼 색상 */
     .btn { display: inline-block; padding: 13px 15px; margin: 6px 0; border: none; border-radius: 8px; cursor: pointer; font-size: 15px; width: 100%; box-sizing: border-box; font-weight: bold; transition: 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
     .btn:active { transform: scale(0.98); box-shadow: none; }
-    .btn-blue { background: #2e7d32; color: white; } /* 칠판 녹색 (메인) */
-    .btn-green { background: #1565c0; color: white; } /* 신뢰의 네이비 (서브) */
-    .btn-red { background: #c62828; color: white; } /* 경고 빨강 */
-    .btn-purple { background: #f57c00; color: white; } /* 강조 주황색 */
-    .btn-gray { background: #6d4c41; color: white; } /* 나무 브라운 */
+    .btn-blue { background: #2e7d32; color: white; } 
+    .btn-green { background: #1565c0; color: white; } 
+    .btn-red { background: #c62828; color: white; } 
+    .btn-purple { background: #f57c00; color: white; } 
+    .btn-gray { background: #6d4c41; color: white; } 
     
     input[type="text"], input[type="password"], input[type="date"], select { 
       width: 100%; padding: 12px; margin: 8px 0 15px 0; box-sizing: border-box; border: 1px solid #cfd8dc; border-radius: 6px; font-size: 15px; background-color: #fafafa; transition: border 0.3s;
@@ -36,15 +33,12 @@
     .spinner { border: 4px solid #e8f5e9; border-top: 4px solid #2e7d32; border-radius: 50%; width: 45px; height: 45px; animation: spin 1s linear infinite; margin-bottom: 15px; }
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-    /* 서명 패드 (노트 느낌) */
     .canvas-wrapper { border: 2px solid #b0bec5; border-radius: 8px; background: #ffffff; margin-bottom: 15px; touch-action: none; box-shadow: inset 0 2px 5px rgba(0,0,0,0.05); }
     canvas { width: 100%; height: 200px; display: block; border-radius: 8px; }
     
-    /* 상태 표시 박스 (칠판 메시지 느낌) */
     .status-box { background: #e8f5e9; padding: 15px; border-radius: 8px; margin: 20px 0; font-size: 1.15em; font-weight: bold; text-align: center; color: #1b5e20; border: 1px solid #c8e6c9; }
     .status-box span { font-size: 1.4em; color: #c62828; margin: 0 5px; }
     
-    /* 각 구역 박스 */
     .section { margin-bottom: 25px; background: #ffffff; padding: 18px; border-radius: 10px; border: 1px solid #e0e0e0; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
     .section p:first-child { font-size: 1.05em; color: #2e7d32; border-bottom: 1px solid #e8f5e9; padding-bottom: 8px; margin-bottom: 12px; }
     
@@ -52,11 +46,9 @@
     .qr-box img { max-width: 180px; margin: 0 auto; border-radius: 5px; }
     #shareUrl { background: #f1f8e9; color: #2e7d32; font-weight:bold; text-align: center; cursor: pointer; border: 1px solid #c8e6c9; }
     
-    /* 연수 목록 아이템 */
     .session-item { display: flex; justify-content: space-between; align-items: center; background: #fff; border: 1px solid #e0e0e0; padding: 15px; margin-bottom: 10px; border-radius: 8px; border-left: 5px solid #4caf50; transition: background 0.2s; }
     .session-item:hover { background: #f9fbe7; }
 
-    /* 체크박스 디자인 */
     .checkbox-list { background: #fafafa; border: 1px solid #cfd8dc; border-radius: 6px; max-height: 160px; overflow-y: auto; padding: 5px; }
     .cb-item { display: flex; align-items: center; padding: 12px 10px; border-bottom: 1px solid #eceff1; cursor: pointer; transition: background 0.2s; border-radius: 4px; }
     .cb-item:hover { background: #e8f5e9; }
@@ -64,7 +56,6 @@
     .cb-item input[type="checkbox"] { width: 22px; height: 22px; margin-right: 12px; cursor: pointer; accent-color: #2e7d32; }
     .cb-label { font-size: 15px; color: #37474f; line-height: 1.4; }
 
-    /* 이름 선택 모달창 */
     .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1000; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(3px); }
     .modal-content { background: white; width: 92%; max-width: 500px; max-height: 80vh; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
     .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #2e7d32; padding-bottom: 12px; margin-bottom: 15px; }
@@ -121,7 +112,12 @@
 
     <div class="section">
       <p style="font-weight:bold; margin-top:0;">👩‍🏫 교직원 명단 관리</p>
-      <button class="btn btn-gray" onclick="downloadTpl()" style="margin-bottom:5px;">📥 기본 양식 파일(CSV) 다운로드</button>
+      
+      <div style="display: flex; gap: 10px; margin-bottom: 5px;">
+        <button class="btn btn-gray" onclick="downloadTpl()" style="margin: 0; flex: 1;">📥 기본 양식 (CSV)</button>
+        <button class="btn btn-blue" onclick="downloadCurrentList()" style="margin: 0; flex: 1;">📤 현재 명단 다운로드</button>
+      </div>
+      
       <p style="font-size:0.85em; color:#c62828; margin-top:0; margin-bottom:15px; font-weight:bold;">※ 한셀 사용자는 작성 후 [다른 이름으로 저장]에서 '엑셀 문서(.xlsx)'로 저장하여 올려주세요.</p>
       
       <input type="file" id="excelFile" accept=".xlsx, .xls, .csv, .cell">
@@ -176,7 +172,6 @@
   </div>
 
   <script>
-    // ⭐️ API 주소
     const API_URL = "https://script.google.com/macros/s/AKfycbw5gwaJkwcU9Q4jaLfogIh03KRXmJNsBTVrerATWRpg-JYVG4bNU-CRxeTjZcqsaqs-/exec";
     const FRONTEND_URL = window.location.origin + window.location.pathname;
 
@@ -337,6 +332,35 @@
       document.body.appendChild(link); link.click(); document.body.removeChild(link);
     }
 
+    // ⭐️ [신규 기능] 현재 등록된 명단 엑셀 다운로드
+    async function downloadCurrentList() {
+      showLoading("명단 데이터를 가져오는 중입니다...");
+      const res = await apiGet('getDataForUser');
+      hideLoading();
+
+      if (res.success) {
+        const staff = res.data.staff;
+        if (staff.length === 0) return alert("현재 등록된 명단이 없습니다. 먼저 명단을 업로드해주세요.");
+
+        // 엑셀용 배열 생성 (첫 줄은 제목)
+        const excelData = [["연번", "직위", "성명"]];
+        
+        staff.forEach((person, index) => {
+          excelData.push([index + 1, person.pos, person.name]);
+        });
+
+        // 엑셀 파일 생성 및 다운로드
+        const worksheet = XLSX.utils.aoa_to_sheet(excelData);
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, "현재명단");
+        
+        const fileName = `${currentSchool}_연수명단.xlsx`;
+        XLSX.writeFile(workbook, fileName);
+      } else {
+        alert("명단을 불러오는데 실패했습니다.");
+      }
+    }
+
     function uploadExcel() {
       const fileInput = document.getElementById('excelFile');
       if (fileInput.files.length === 0) return alert('파일을 선택해주세요.');
@@ -390,7 +414,7 @@
       if(res.success) { document.getElementById('staffCount').innerText = "0"; alert("명단이 초기화되었습니다."); }
     }
 
-    /* ================= 🖨️ 고급 출력 기능 (그대로 유지) ================= */
+    /* ================= 🖨️ 고급 출력 기능 ================= */
     async function printSession(sessionId, title, date, time, location_str) {
       showLoading("서명 데이터를 불러오는 중...");
       const userRes = await apiGet('getDataForUser');
