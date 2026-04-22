@@ -332,7 +332,6 @@
       document.body.appendChild(link); link.click(); document.body.removeChild(link);
     }
 
-    // ⭐️ [신규 기능] 현재 등록된 명단 엑셀 다운로드
     async function downloadCurrentList() {
       showLoading("명단 데이터를 가져오는 중입니다...");
       const res = await apiGet('getDataForUser');
@@ -342,14 +341,12 @@
         const staff = res.data.staff;
         if (staff.length === 0) return alert("현재 등록된 명단이 없습니다. 먼저 명단을 업로드해주세요.");
 
-        // 엑셀용 배열 생성 (첫 줄은 제목)
         const excelData = [["연번", "직위", "성명"]];
         
         staff.forEach((person, index) => {
           excelData.push([index + 1, person.pos, person.name]);
         });
 
-        // 엑셀 파일 생성 및 다운로드
         const worksheet = XLSX.utils.aoa_to_sheet(excelData);
         const workbook = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(workbook, worksheet, "현재명단");
@@ -414,7 +411,7 @@
       if(res.success) { document.getElementById('staffCount').innerText = "0"; alert("명단이 초기화되었습니다."); }
     }
 
-    /* ================= 🖨️ 고급 출력 기능 ================= */
+    /* ================= 🖨️ 고급 출력 기능 (통계 삭제 반영) ================= */
     async function printSession(sessionId, title, date, time, location_str) {
       showLoading("서명 데이터를 불러오는 중...");
       const userRes = await apiGet('getDataForUser');
